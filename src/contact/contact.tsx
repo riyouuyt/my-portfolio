@@ -2,6 +2,9 @@ import React from "react";
 import Image from 'next/image';
 import styles from "./Contact.module.css";
 
+//import image
+import contact from "../../public/assets/contact.png"
+
 const Contact: React.FC = () => {
   return (
     <section className={styles.section}>
@@ -12,7 +15,7 @@ const Contact: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.avatar}>
           <Image
-            src="/assets/contact.png"
+            src={contact}
             alt="contact"
             width={500}
             height={500}

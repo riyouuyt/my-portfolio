@@ -5,6 +5,15 @@ import SkillLogos from './skillLogos';
 import Image from 'next/image';
 import styles from './skills.module.css';
 
+//importing images
+import dqlab from '../../public/assets/dqlab.jpg'
+import rakamin from '../../public/assets/rakaminnn.png'
+import idz from '../../public/assets/indozone.jpeg'
+import idz1 from '../../public/assets/google_news.jpg'
+import idz2 from '../../public/assets/idz_intern.jpeg'
+import idz3 from '../../public/assets/idz_kompas.jpeg'
+import idz4 from '../../public/assets/indozone_17.jpg'
+
 const ExperienceAndSkills: React.FC = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -13,7 +22,7 @@ const ExperienceAndSkills: React.FC = () => {
       company: "Indozone.id",
       role: "Data Analyst Intern",
       period: "Aug 2023 - Nov 2023",
-      logo: "/assets/indozone.jpeg",
+      logo: idz,
       description:
         "Indozone.id is a leading digital media company in Indonesia that focuses on delivering current news and trending content to millennial and Gen Z audiences. They have established themselves as a trusted source for young Indonesians seeking the latest updates and information. In addition to news, Indozone.id also offers a wide range of content, including entertainment, lifestyle, sports, and more. Their focus on trending topics and engaging content makes them a popular destination for young people in Indonesia.",
       responsibilities: [
@@ -23,18 +32,13 @@ const ExperienceAndSkills: React.FC = () => {
         "Collaborated with editorial team to identify trending topics and content opportunities",
         "Conducted A/B testing for headline optimization and content placement",
       ],
-      gallery: [
-        "/assets/google_news.jpg",
-        "/assets/idz_intern.jpeg",
-        "/assets/idz_kompas.jpeg",
-        "/assets/indozone_17.jpg",
-      ],
+      gallery: [idz1, idz2, idz3, idz4],
     },
   ];
 
   const educations = [
     {
-      logo: "/assets/dqlab.jpg",
+      logo: dqlab,
       name: "DQlab Academy",
       period: "Nov 23 - Feb 24",
       description:
@@ -42,7 +46,7 @@ const ExperienceAndSkills: React.FC = () => {
       certificate: true,
     },
     {
-      logo: "/assets/rakaminnn.png",
+      logo: rakamin,
       name: "Rakamin Academy",
       period: "Mar 24 - Jul 24",
       description:
