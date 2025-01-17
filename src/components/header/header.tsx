@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+//import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Briefcase, Code, BookOpen, Mail, Menu, X } from 'lucide-react';
 

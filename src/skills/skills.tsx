@@ -1,10 +1,12 @@
+// src/skills/skills.tsx
 import React, { useState } from 'react';
 import { Download, ChevronRight } from 'lucide-react';
 import SkillLogos from './skillLogos';
+import Image from 'next/image';
 import styles from './skills.module.css';
 
-const ExperienceAndSkills = () => {
-  const [expandedIndex, setExpandedIndex] = useState(null);
+const ExperienceAndSkills: React.FC = () => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const experiences = [
     {
@@ -78,10 +80,12 @@ const ExperienceAndSkills = () => {
         {experiences.map((exp, index) => (
           <div key={index} className={styles.experienceCard}>
             <div className={styles.experienceHeader}>
-              <img
+              <Image
                 src={exp.logo}
                 alt={exp.company}
                 className={styles.experienceLogo}
+                width={90}  // Adjust width as necessary
+                height={90} // Adjust height as necessary
               />
               <div className={styles.experienceContent}>
                 <div className={styles.experienceHeaderTop}>
@@ -126,11 +130,13 @@ const ExperienceAndSkills = () => {
                       <h4 className={styles.subTitle}>Event Gallery</h4>
                       <div className={styles.galleryGrid}>
                         {exp.gallery.map((img, idx) => (
-                          <img
+                          <Image
                             key={idx}
                             src={img}
                             alt={`Event ${idx + 1}`}
                             className={styles.galleryImage}
+                            width={700} // Adjust width as necessary
+                            height={700} // Adjust height as necessary
                           />
                         ))}
                       </div>
@@ -149,10 +155,12 @@ const ExperienceAndSkills = () => {
         <div className={styles.educationGrid}>
           {educations.map((edu, index) => (
             <div key={index} className={styles.educationCard}>
-              <img
+              <Image
                 src={edu.logo}
                 alt={edu.name}
                 className={styles.educationLogo}
+                width={100}  // Adjust width as necessary
+                height={100} // Adjust height as necessary
               />
               <div className={styles.educationContent}>
                 <h3 className={styles.educationName}>{edu.name}</h3>

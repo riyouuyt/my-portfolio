@@ -1,19 +1,23 @@
 import React from "react";
+import Image from 'next/image';
 import styles from "./Contact.module.css";
 
 const Contact: React.FC = () => {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h1 className={styles.headerTitle}>Let's Connect !!</h1>
+        <h1 className={styles.headerTitle}>Let&apos;s Connect !!</h1>
         <div className={styles.headerUnderline}></div>
       </div>
       <div className={styles.container}>
         <div className={styles.avatar}>
-          <img
-            src="/assets/contact.png" // Ganti dengan URL gambar Anda
+          <Image
+            src="/assets/contact.png"
             alt="contact"
+            width={500}
+            height={500}
             className={styles.image}
+            priority
           />
         </div>
         <div className={styles.contactInfo}>
@@ -40,13 +44,13 @@ const Contact: React.FC = () => {
                 href="https://linkedin.com/in/bagus-ariobimo"
                 className={styles.link}
               >
-                linkedin.com/in/bagus ariobimo
+                linkedin.com/in/bagus-ariobimo
               </a>
             </li>
             <li className={styles.listItem}>
               <span className={styles.icon}>📞</span>
               <a href="tel:+62881010698976" className={styles.link}>
-                 +62881010698976
+                +62881010698976
               </a>
             </li>
           </ul>
