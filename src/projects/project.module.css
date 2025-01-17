@@ -1,0 +1,169 @@
+.projectsSection {
+  padding: 4rem 0;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.carouselContainer {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  min-height: 400px;
+  position: relative;
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  max-width: 320px;
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.activeCard {
+  opacity: 1;
+  z-index: 1;
+}
+
+.inactiveCard {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cardIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.cardDescription {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.moreInfoButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.moreInfoButton:hover {
+  background-color: #1d4ed8;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.2s;
+}
+
+.navButton:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.prevButton {
+  left: 1rem;
+}
+
+.nextButton {
+  right: 1rem;
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.activeDot {
+  background-color: #2563eb;
+  transform: scale(1.2);
+}
+
+/* New styles for tags */
+.tagsContainer {
+  margin-top: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  margin-right: 0.5rem;
+  background-color: #e5e7eb;
+  color: #1f2937;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .card {
+    max-width: 400px;
+  }
+  
+  .navButton {
+    width: 3rem;
+    height: 3rem;
+  }
+}
