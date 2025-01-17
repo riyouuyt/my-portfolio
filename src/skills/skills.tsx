@@ -27,7 +27,7 @@ const ExperienceAndSkills: React.FC = () => {
         "/assets/google_news.jpg",
         "/assets/idz_intern.jpeg",
         "/assets/idz_kompas.jpeg",
-        "/assets/indozone 17.jpg",
+        "/assets/indozone_17.jpg",
       ],
     },
   ];

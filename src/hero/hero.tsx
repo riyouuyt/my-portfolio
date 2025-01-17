@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './hero.module.css';
+import heroImg from '../../public/assets/profile.png'
 
 const Hero: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ const Hero: React.FC = () => {
 
         <div className={styles.heroImage}>
           <Image 
-            src="/assets/profile.png" 
+            src={heroImg} 
             alt="Hero illustration" 
             width={500}
             height={500}
