@@ -1,26 +1,26 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Home, Briefcase, Code, BookOpen, Mail, Menu, X } from 'lucide-react';
 
 interface NavigationItem {
   id: string;
   label: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
 }
 
-const Header: React.FC = () => {
+const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('home');
 
-  // Moved navigationItems inside component to access in useEffect
-  const navigationItems: NavigationItem[] = [
+  // Wrap navigationItems in useMemo to prevent unnecessary re-renders
+  const navigationItems = useMemo<NavigationItem[]>(() => [
     { id: 'home', label: 'Home', icon: <Home size={20} /> },
     { id: 'skills', label: 'Experience', icon: <Briefcase size={20} /> },
     { id: 'projects', label: 'Projects', icon: <Code size={20} /> },
     { id: 'blog', label: 'Blog', icon: <BookOpen size={20} /> },
     { id: 'contact', label: 'Contact', icon: <Mail size={20} /> },
-  ];
+  ], []); // Empty dependency array since these items never change
 
   // Handle smooth scrolling
   const scrollToSection = (sectionId: string) => {
@@ -63,7 +63,7 @@ const Header: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [navigationItems]); // Added navigationItems to dependency array
+  }, [navigationItems]);
 
   return (
     <header className="fixed top-0 left-0 w-full h-16 bg-white shadow-md z-50">
