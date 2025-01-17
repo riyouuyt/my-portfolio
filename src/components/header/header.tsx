@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-//import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Home, Briefcase, Code, BookOpen, Mail, Menu, X } from 'lucide-react';
 
 interface NavigationItem {
@@ -14,8 +12,8 @@ interface NavigationItem {
 const Header: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('home');
-  const pathname = usePathname();
 
+  // Moved navigationItems inside component to access in useEffect
   const navigationItems: NavigationItem[] = [
     { id: 'home', label: 'Home', icon: <Home size={20} /> },
     { id: 'skills', label: 'Experience', icon: <Briefcase size={20} /> },
@@ -65,7 +63,7 @@ const Header: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navigationItems]); // Added navigationItems to dependency array
 
   return (
     <header className="fixed top-0 left-0 w-full h-16 bg-white shadow-md z-50">
