@@ -1,95 +1,113 @@
-/*/Hero/Hero.module.css */
+/* /Hero/hero.module.css */
 .heroSection {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 11.5rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap; /* Untuk mendukung tampilan mobile */
+  width: 100%;
   background-color: white;
   color: black;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;  /* Changed from column-reverse to column */
+  gap: 2rem;
+  padding: 1rem;
 }
 
 .heroContent {
-  max-width: 36rem;
-  flex: 1 1 100%; /* Menyesuaikan lebar pada layar kecil */
-
+  width: 100%;
 }
 
 .heroContent h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  align-text: left;
+  text-align: center;
 }
 
 .heroContent h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #4B5563;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .heroContent p {
   color: #4B5563;
   margin-bottom: 2rem;
-  padding-right: 4rem;
-  text-align: justify;
+  text-align: center;
+  padding: 0 1rem;
 }
 
 .downloadBtn {
   background-color: black;
   color: white;
-  padding: 0.5rem 1.5rem;
+  padding: 0.75rem 2rem;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
   font-weight: bold;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
 }
 
+.heroImage {
+  width: 80%;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-left: 90px;
+}
 
 .heroImage img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
 }
 
 
-/* Media Query untuk layar kecil */
-@media (max-width: 768px) {
+
+@media (min-width: 768px) {
   .heroSection {
-    padding: 10rem 1rem;
-    flex-direction: column; 
+    padding: 6rem 1rem;
+  }
+
+  .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
   }
 
   .heroContent {
-    text-align: center;
-    padding-right: 0; 
+    max-width: 36rem;
+    order: 1; /* Ensures content comes first on desktop */
+  }
+
+  .heroContent h1 {
+    font-size: 3rem;
+    text-align: left;
+  }
+
+  .heroContent h2 {
+    font-size: 1.5rem;
+    text-align: left;
   }
 
   .heroContent p {
     text-align: justify;
-    margin-left: 6px;
-    padding-right: 0.4rem;
-  }
-
-  .heroImage img {
-    display: none;
-    width: 50%; 
-  }
-}
-
-/* Media Query untuk layar sangat kecil */
-@media (max-width: 480px) {
-  .heroContent h1 {
-    font-size: 2rem;
-  }
-
-  .heroContent h2 {
-    font-size: 1.25rem;
+    padding: 0;
+    padding-right: 2.5rem;
   }
 
   .downloadBtn {
-    padding: 0.5rem 1rem;
+    margin: 0;
   }
+
+  .heroImage {
+    max-width: none;
+    flex: 1;
+    order: 2; /* Ensures image comes second on desktop */
+    }
 }

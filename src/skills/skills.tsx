@@ -13,6 +13,7 @@ import idz1 from '../../public/assets/google_news.jpg'
 import idz2 from '../../public/assets/idz_intern.jpeg'
 import idz3 from '../../public/assets/idz_kompas.jpeg'
 import idz4 from '../../public/assets/indozone_17.jpg'
+import rankSimilarWebImage from '../../public/assets/similarweb.png'
 
 const ExperienceAndSkills: React.FC = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -23,14 +24,24 @@ const ExperienceAndSkills: React.FC = () => {
       role: "Data Analyst Intern",
       period: "Aug 2023 - Nov 2023",
       logo: idz,
-      description:
-        "Indozone.id is a leading digital media company in Indonesia that focuses on delivering current news and trending content to millennial and Gen Z audiences. They have established themselves as a trusted source for young Indonesians seeking the latest updates and information. In addition to news, Indozone.id also offers a wide range of content, including entertainment, lifestyle, sports, and more. Their focus on trending topics and engaging content makes them a popular destination for young people in Indonesia.",
+      description: [
+        "Indozone.id is a leading digital media company in Indonesia, focusing on delivering the latest news and trending content to Millennial and Gen Z audiences. Globally, it ranks 65th in the Media and News category, according to SimilarWeb, solidifying its position as one of the most influential digital media platforms.",
+        "Founded on September 18, 2014, Indozone is widely recognized for its popular tagline, #KAMUHARUSTAU (You Must Know). As a multi-platform news and entertainment media, Indozone is dedicated to becoming a trusted source of information for young Indonesians. With a vision to produce the most engaging, influential, and high-impact content, Indozone has firmly established itself as a go-to platform for Millennials and Gen Z.",
+        <Image 
+          src={rankSimilarWebImage} 
+          alt="Indozone Rank on SimilarWeb" 
+          key="rank-similar-web" 
+          className="mx-auto my-8 align-middle pt-5"
+          width={600}
+          height={600}
+        />,
+      ],
+      
       responsibilities: [
-        "Analyzed user behavior and content performance using Google Analytics and Search Console",
-        "Created interactive dashboards using Looker Studio to visualize key metrics",
-        "Optimized content strategy based on data insights, resulting in 25% increase in user engagement",
-        "Collaborated with editorial team to identify trending topics and content opportunities",
-        "Conducted A/B testing for headline optimization and content placement",
+        "Contributed to the development of weekly and monthly reports, providing detailed insights into page views and unique visitors to track audience trends effectively",
+        "Designed and implemented two Looker Studio dashboards: a comprehensive dashboard for monitoring writer and audience performance, and a specialized dashboard for visualizing Google Search Console data",
+        "Enhanced reporting by introducing new metrics, including the analysis of page view differences between weekdays and weekends, offering valuable insights for content strategy adjustments",
+        "Played a key role in driving a 15% increase in page views from May to August by analyzing user behavior and providing actionable insights for content optimization",
       ],
       gallery: [idz1, idz2, idz3, idz4],
     },
@@ -44,6 +55,7 @@ const ExperienceAndSkills: React.FC = () => {
       description:
         "Attended an intensive Data Science program with a focus on Python and SQL. Learned data analysis, data visualization using python framework. Completed over 5 hands-on projects including Churn Customers, Clustering, Analyzing business Decision.",
       certificate: true,
+      certificateUrl: "/certificates/dqlab-certificate.pdf" 
     },
     {
       logo: rakamin,
@@ -52,8 +64,27 @@ const ExperienceAndSkills: React.FC = () => {
       description:
         "Engaged in a Full Stack Data Science Bootcamp with an emphasis on end-to-end data science pipeline. Work on capstone projects with real industry clients using modern tech stack.",
       certificate: true,
+      certificateUrl: "/certificates/rakamin-certificate.pdf" 
     },
   ];
+
+  // Add download certificate function
+  const handleDownloadCertificate = (certificateUrl: string, instituteName: string) => {
+    try {
+      // Create an anchor element
+      const link = document.createElement('a');
+      link.href = certificateUrl;
+      link.download = `${instituteName.toLowerCase().replace(' ', '-')}-certificate.pdf`;
+      
+      // Append to document, trigger click, and remove
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error downloading certificate:', error);
+      alert('Failed to download certificate. Please try again later.');
+    }
+  };
 
   const skills = {
     programming: [
@@ -120,7 +151,7 @@ const ExperienceAndSkills: React.FC = () => {
                     </div>
 
                     <div>
-                      <h4 className={styles.subTitle}>Job Responsibilities</h4>
+                      <h4 className={styles.subTitle}>My Achievements</h4>
                       <ul className={styles.responsibilitiesList}>
                         {exp.responsibilities.map((resp, idx) => (
                           <li key={idx} className={styles.text}>
@@ -163,15 +194,19 @@ const ExperienceAndSkills: React.FC = () => {
                 src={edu.logo}
                 alt={edu.name}
                 className={styles.educationLogo}
-                width={100}  // Adjust width as necessary
-                height={100} // Adjust height as necessary
+                width={100}
+                height={100}
               />
               <div className={styles.educationContent}>
                 <h3 className={styles.educationName}>{edu.name}</h3>
                 <p className={styles.period}>{edu.period}</p>
                 <p className={styles.text}>{edu.description}</p>
-                {edu.certificate && (
-                  <button className={styles.downloadButton}>
+                {edu.certificate && edu.certificateUrl && (
+                  <button 
+                    className={styles.downloadButton}
+                    onClick={() => handleDownloadCertificate(edu.certificateUrl, edu.name)}
+                    aria-label={`Download ${edu.name} certificate`}
+                  >
                     <Download size={16} />
                     <span>Download Certificate</span>
                   </button>

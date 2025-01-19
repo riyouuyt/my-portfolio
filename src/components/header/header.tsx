@@ -7,29 +7,40 @@ interface NavigationItem {
   id: string;
   label: string;
   icon: React.ReactElement;
+  href?: string;  // Add optional href property for external links
+  isExternal?: boolean;  // Add flag for external links
 }
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('home');
 
-  // Wrap navigationItems in useMemo to prevent unnecessary re-renders
+  // Updated navigationItems with the external blog link
   const navigationItems = useMemo<NavigationItem[]>(() => [
     { id: 'home', label: 'Home', icon: <Home size={20} /> },
     { id: 'skills', label: 'Experience', icon: <Briefcase size={20} /> },
     { id: 'projects', label: 'Projects', icon: <Code size={20} /> },
-    { id: 'blog', label: 'Blog', icon: <BookOpen size={20} /> },
+    { 
+      id: 'blog', 
+      label: 'Blog', 
+      icon: <BookOpen size={20} />, 
+      href: 'https://riyouuyt.blogpro.so/',
+      isExternal: true 
+    },
     { id: 'contact', label: 'Contact', icon: <Mail size={20} /> },
-  ], []); // Empty dependency array since these items never change
+  ], []);
 
-  // Handle smooth scrolling
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // Close mobile sidebar if open
+  // Modified scroll function to handle external links
+  const handleNavigation = (item: NavigationItem) => {
+    if (item.isExternal && item.href) {
+      window.open(item.href, '_blank', 'noopener,noreferrer');
       setIsSidebarOpen(false);
-      
-      // Smooth scroll to section
+      return;
+    }
+
+    const element = document.getElementById(item.id);
+    if (element) {
+      setIsSidebarOpen(false);
       element.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
@@ -37,13 +48,15 @@ const Header = () => {
     }
   };
 
-  // Update active section based on scroll position
+  // Rest of your existing useEffect code remains the same
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navigationItems.map(item => ({
-        id: item.id,
-        element: document.getElementById(item.id),
-      }));
+      const sections = navigationItems
+        .filter(item => !item.isExternal) // Only track scroll for non-external links
+        .map(item => ({
+          id: item.id,
+          element: document.getElementById(item.id),
+        }));
 
       const scrollPosition = window.scrollY + window.innerHeight / 3;
 
@@ -71,7 +84,7 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex-shrink-0">
           <button 
-            onClick={() => scrollToSection('home')}
+            onClick={() => handleNavigation({ id: 'home', label: 'Home', icon: <Home size={20} /> })}
             className="text-xl font-bold text-gray-800 hover:text-gray-600"
           >
             BA&apos;s Portfolio
@@ -83,7 +96,7 @@ const Header = () => {
           {navigationItems.map((item) => (
             <button
               key={item.id}
-              onClick={() => scrollToSection(item.id)}
+              onClick={() => handleNavigation(item)}
               className={`flex items-center space-x-2 text-pretty font-bold transition-colors duration-200 subpixel-antialiased
                 ${activeSection === item.id
                   ? 'text-blue-600'
@@ -127,7 +140,7 @@ const Header = () => {
             {navigationItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavigation(item)}
                 className={`flex items-center space-x-4 text-sm font-bold transition-colors duration-200 w-full
                   ${activeSection === item.id
                     ? 'text-blue-600'
