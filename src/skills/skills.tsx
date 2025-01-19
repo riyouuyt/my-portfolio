@@ -22,7 +22,7 @@ const ExperienceAndSkills: React.FC = () => {
     {
       company: "Indozone.id",
       role: "Data Analyst Intern",
-      period: "Aug 2023 - Nov 2023",
+      period: "Aug 2024 - Nov 2024",
       logo: idz,
       description: [
         "Indozone.id is a leading digital media company in Indonesia, focusing on delivering the latest news and trending content to Millennial and Gen Z audiences. Globally, it ranks 65th in the Media and News category, according to SimilarWeb, solidifying its position as one of the most influential digital media platforms.",
@@ -51,7 +51,7 @@ const ExperienceAndSkills: React.FC = () => {
     {
       logo: dqlab,
       name: "DQlab Academy",
-      period: "Nov 23 - Feb 24",
+      period: "Nov 22 - Feb 23",
       description:
         "Attended an intensive Data Science program with a focus on Python and SQL. Learned data analysis, data visualization using python framework. Completed over 5 hands-on projects including Churn Customers, Clustering, Analyzing business Decision.",
       certificate: true,
@@ -60,7 +60,7 @@ const ExperienceAndSkills: React.FC = () => {
     {
       logo: rakamin,
       name: "Rakamin Academy",
-      period: "Mar 24 - Jul 24",
+      period: "Mar 23 - Jul 23",
       description:
         "Engaged in a Full Stack Data Science Bootcamp with an emphasis on end-to-end data science pipeline. Work on capstone projects with real industry clients using modern tech stack.",
       certificate: true,
