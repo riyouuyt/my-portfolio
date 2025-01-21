@@ -2,12 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-// Mengimpor font Inter dengan subsets latin dan berbagai weight
-const interFont = Inter({
-  subsets: ["latin"],
-  weight: ["600", "600", "600", "700"], // Tambahkan weight sesuai kebutuhan
-  variable: "--font-inter", // Variabel CSS untuk font Inter
-});
+// Mengimpor font Inter dengan subsets latin
+const inter = Inter({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "Riyouuyt Portfolio",
@@ -16,14 +12,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${interFont.variable} antialiased`}
-      >
+      <body className={`${inter.className} antialiased`}>
         {children}
       </body>
     </html>

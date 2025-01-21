@@ -7,15 +7,14 @@ interface NavigationItem {
   id: string;
   label: string;
   icon: React.ReactElement;
-  href?: string;  // Add optional href property for external links
-  isExternal?: boolean;  // Add flag for external links
+  href?: string;
+  isExternal?: boolean;
 }
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('home');
 
-  // Updated navigationItems with the external blog link
   const navigationItems = useMemo<NavigationItem[]>(() => [
     { id: 'home', label: 'Home', icon: <Home size={20} /> },
     { id: 'skills', label: 'Experience', icon: <Briefcase size={20} /> },
@@ -30,7 +29,6 @@ const Header = () => {
     { id: 'contact', label: 'Contact', icon: <Mail size={20} /> },
   ], []);
 
-  // Modified scroll function to handle external links
   const handleNavigation = (item: NavigationItem) => {
     if (item.isExternal && item.href) {
       window.open(item.href, '_blank', 'noopener,noreferrer');
@@ -48,11 +46,10 @@ const Header = () => {
     }
   };
 
-  // Rest of your existing useEffect code remains the same
   useEffect(() => {
     const handleScroll = () => {
       const sections = navigationItems
-        .filter(item => !item.isExternal) // Only track scroll for non-external links
+        .filter(item => !item.isExternal)
         .map(item => ({
           id: item.id,
           element: document.getElementById(item.id),
@@ -79,13 +76,13 @@ const Header = () => {
   }, [navigationItems]);
 
   return (
-    <header className="fixed top-0 left-0 w-full h-16 bg-white shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full h-16 bg-white shadow-md z-50 font-inter">
       {/* Main Header */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex-shrink-0">
           <button 
             onClick={() => handleNavigation({ id: 'home', label: 'Home', icon: <Home size={20} /> })}
-            className="text-xl font-bold text-gray-800 hover:text-gray-600"
+            className="text-xl font-bold text-gray-800 hover:text-gray-600 font-inter"
           >
             BA&apos;s Portfolio
           </button>
@@ -97,7 +94,7 @@ const Header = () => {
             <button
               key={item.id}
               onClick={() => handleNavigation(item)}
-              className={`flex items-center space-x-2 text-pretty font-bold transition-colors duration-200 subpixel-antialiased
+              className={`flex items-center space-x-2 text-pretty font-bold transition-colors duration-200 subpixel-antialiased font-inter
                 ${activeSection === item.id
                   ? 'text-blue-600'
                   : 'text-gray-800 hover:text-blue-600'
@@ -122,7 +119,7 @@ const Header = () => {
       <div
         className={`fixed inset-y-0 right-0 w-64 bg-white shadow-lg transform ${
           isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
-        } transition-transform duration-200 ease-in-out md:hidden z-50`}
+        } transition-transform duration-200 ease-in-out md:hidden z-50 font-inter`}
       >
         <div className="p-6">
           <div className="flex items-center justify-between mb-8">
