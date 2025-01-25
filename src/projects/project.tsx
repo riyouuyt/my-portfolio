@@ -24,14 +24,14 @@ const Projects: React.FC = () => {
       description: "Interactive dashboard for visualizing medicine sales across indonesia with multiple filters",
       github: "https://github.com/riyouuyt/VIX-Salicy-Sales-Dashboard",
       icon: "💊",
-      tags: ["Rakamin Virtual Intern"]
+      tags: ["Rakamin Virtual Intern", "Kimia Farma"]
     },
     {
       title: "VIX Home Credit Scorecard Model",
       description: "Predictive model for home credit risk assessment, leveraging features to optimize loan approval and mitigate default risks.",
       github: "https://github.com/riyouuyt/VIX-Home-Credit-Scorecard-Model",
       icon: "💳",
-      tags: ["Rakamin Virtual Intern"]
+      tags: ["Rakamin Virtual Intern", "Home Credit Indonesia"]
     },
     {
       title: "Machine learning with Python Building Recommender System With Similarity Function",

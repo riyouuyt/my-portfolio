@@ -43,7 +43,12 @@ const ExperienceAndSkills: React.FC = () => {
         "Enhanced reporting by introducing new metrics, including the analysis of page view differences between weekdays and weekends, offering valuable insights for content strategy adjustments",
         "Played a key role in driving a 15% increase in page views from May to August by analyzing user behavior and providing actionable insights for content optimization",
       ],
-      gallery: [idz1, idz2, idz3, idz4],
+      gallery: [
+        {src: idz1, caption: "Google Workshop at Artotel Indonesia"}, 
+        {src: idz2, caption: "Intern Staff at Indozone.id"}, 
+        {src: idz3, caption: "SEO Fundamental at Kompas.id"}, 
+        {src: idz4, caption: "Independence Day at Indozone.id"}
+      ],
     },
   ];
 
@@ -165,14 +170,16 @@ const ExperienceAndSkills: React.FC = () => {
                       <h4 className={styles.subTitle}>Event Gallery</h4>
                       <div className={styles.galleryGrid}>
                         {exp.gallery.map((img, idx) => (
-                          <Image
-                            key={idx}
-                            src={img}
-                            alt={`Event ${idx + 1}`}
-                            className={styles.galleryImage}
-                            width={700} // Adjust width as necessary
-                            height={700} // Adjust height as necessary
-                          />
+                          <div key={idx} className={styles.galleryItem}>
+                            <Image                  
+                              src={img.src}
+                              alt={`Event ${idx + 1}`}
+                              className={styles.galleryImage}
+                              width={700} // Adjust width as necessary
+                              height={700} // Adjust height as necessary
+                            />
+                            <p className={styles.caption}>{img.caption}</p> {/* Menambahkan keterangan */}
+                          </div>
                         ))}
                       </div>
                     </div>

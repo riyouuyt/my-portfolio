@@ -150,6 +150,16 @@
   transform: scale(1.05);
 }
 
+.galleryItem {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 5px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: auto;
+}
+
 /* Education Styles */
 .educationGrid {
   display: grid;
