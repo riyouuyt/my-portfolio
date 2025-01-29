@@ -1,7 +1,7 @@
 // src/skills/skills.tsx
 import React, { useState } from 'react';
 import { Download, ChevronRight } from 'lucide-react';
-import SkillLogos from './skillLogos';
+import SkillLogos from './logos';
 import Image from 'next/image';
 import styles from './skills.module.css';
 
