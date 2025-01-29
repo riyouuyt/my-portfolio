@@ -23,7 +23,7 @@ const Header = () => {
       id: 'blog', 
       label: 'Blog', 
       icon: <BookOpen size={20} />, 
-      href: 'https://riyouuyt.blogpro.so/',
+      href: 'https://notion-blog-navy-iota.vercel.app/',
       isExternal: true 
     },
     { id: 'contact', label: 'Contact', icon: <Mail size={20} /> },
