@@ -2,13 +2,19 @@ import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 
+// Define interface for form data
+interface FeedbackFormData {
+  email: string;
+  message: string;
+}
+
 const Footer: FC = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<FeedbackFormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: FeedbackFormData) => {
     setIsSubmitting(true);
     setSubmitError(null);
     
@@ -86,7 +92,7 @@ const Footer: FC = () => {
                   placeholder="your@email.com"
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email.message as string}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
                 )}
               </div>
 
@@ -103,7 +109,7 @@ const Footer: FC = () => {
                   placeholder="Tulis feedback Anda..."
                 />
                 {errors.message && (
-                  <p className="text-red-500 text-sm mt-1">{errors.message.message as string}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
                 )}
               </div>
 
